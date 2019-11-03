@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Tabulka v JS</p>
+
+<script>
+
+var table = '';
+var rows = 10 ;
+var cols = 13;
+for (var r = 0; r < rows; r++)
+    
+{
+	table += '<tr>';
+		for(var c = 1; c <= cols; c++)
+    
+		{
+        	table += '<td>' + c + '</td>';
+		}
+    table += '</tr>';
+
+}
+
+document.write("<table border=1>" + table + "</table>");
+
+</script>
+
+</body>
+</html>
