@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<p id="data"></p>
+
+<script type ="text/javascript">
+
+	const xhr = new XMLHttpRequest();
+
+	xhr.open ('get', 'https://www.csast.csas.cz/webapi/api/v1/rates/exchangerates?web-api-key=86d63706-3a9c-4762-bd7a-415651cc26f8', true)
+	xhr.send ()
+
+	xhr.onreadystatechange = function () {
+		 if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+              document.getElementById("data").textContent = xhr.responseText;
+				}
+				let resp = xhr.responseText
+				let json = JSON.parse(resp)
+
+				for(i = 0; i < json.length; i++) {
+					document.write(json[i].shortName + "<br>")
+				}
+
+				for(i = 0; i < json.length; i++) {
+					document.write(json[i].validFrom + "<br>")
+				}
+
+				for(i = 0; i < json.length; i++) {
+					document.write(json[i].name + "<br>")
+				}
+
+				for(i = 0; i < json.length; i++) {
+					document.write(json[i].country + "<br>")
+				}
+
+				for(i = 0; i < json.length; i++) {
+					document.write(json[i].amount + "<br>")
+				}
+
+				for(i = 0; i < json.length; i++) {
+					document.write(json[i].valBuy + "<br>")
+				}
+
+				for(i = 0; i < json.length; i++) {
+					document.write(json[i].valSell + "<br>")
+				}
+
+				for(i = 0; i < json.length; i++) {
+					document.write(json[i].valMid + "<br>")
+				}
+
+				for(i = 0; i < json.length; i++) {
+					document.write(json[i].currBuy + "<br>")
+				}
+
+				for(i = 0; i < json.length; i++) {
+					document.write(json[i].currSell + "<br>")
+				}
+
+				for(i = 0; i < json.length; i++) {
+					document.write(json[i].currMid + "<br>")
+				}
+
+				for(i = 0; i < json.length; i++) {
+					document.write(json[i].move + "<br>")
+				}
+
+				for(i = 0; i < json.length; i++) {
+					document.write(json[i].cnbMid + "<br>")
+				}
+
+				for(i = 0; i < json.length; i++) {
+					document.write(json[i].version + "<br>")
+				}
+				console.log(resp)
+            } 
+        }
+
+</script>
+
+</body>
+</html>
