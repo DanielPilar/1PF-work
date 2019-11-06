@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	
+	<style type="text/css">
+		body {
+			background-color: lightgray;
+		}
+
+		h2 {
+			color: gray;
+			text-align: center;
+			font-family: tahoma;
+		}
+
+		table {
+			width: 80%;
+			margin: auto;
+		}
+	</style>
+
+</head>
+
+<body>
+
+<h2>
+	Tabulka měn
+</h2>
+
+<div class="table" id="data"></div>
+
+<script type ="text/javascript">
+
+	const xhr = new XMLHttpRequest();
+
+	xhr.open ('get', 'https://www.csast.csas.cz/webapi/api/v1/rates/exchangerates?web-api-key=86d63706-3a9c-4762-bd7a-415651cc26f8', true)
+	xhr.send ()
+
+	xhr.onreadystatechange = function () {
+		let resp = xhr.responseText
+		let json = JSON.parse(resp)
+		let table =""
+			
+		for (var i = 0; i < json.length; i++)
+		{
+
+			let key = Object.keys(json[1])
+			let value = Object.values(json[i])
+
+			table += '<tr>';
+			for(var j = 0; j < key.length; j++)
+    
+				{
+        			table += '<td>' + key[j] + ":" + value[j] + '</td>';
+				}
+			table += '</tr>';	
+		}
+
+		let output = ("<table border=1>" + table + "</table>")
+
+		document.getElementById("data").innerHTML = output
+	}
+
+</script>
+
+</body>
+</html>
